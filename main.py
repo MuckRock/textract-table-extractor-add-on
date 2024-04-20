@@ -6,7 +6,6 @@ import os
 import sys
 import zipfile
 import requests
-import pandas
 from PIL import Image
 from textractor import Textractor
 from textractor.visualizers.entitylist import EntityList
@@ -107,9 +106,10 @@ class TableExtractor(AddOn):
             if end_page > document.page_count:
                 outer_bound = document.page_count + 1
             for page_number in range(start_page, outer_bound):
-                image_url = document.get_large_image_url(page_number)
+                image_data = document.get_large_image(page_number)
                 gif_filename = f"{document.id}-page{page_number}.gif"
-                self.download_image(image_url, gif_filename)
+                with open(gif_filename, 'wb') as f:
+                    f.write(image_data)
                 png_filename = f"{document.id}-page{page_number}.png"
                 self.convert_to_png(gif_filename, png_filename)
                 image = Image.open(png_filename)
