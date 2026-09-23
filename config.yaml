@@ -1,5 +1,9 @@
 title: Textract Table Extractor
 description: Extract tables from your documents using Amazon Textract
+disclosures: |
+  This Add-On sends inputs to Amazon Textract which uses machine learning, a form of AI, to extract tabular data from documents. 
+  We have applied an account wide opt-out of using inputs sent to Amazon Textract for further model training. 
+  Read about Amazon Textract's privacy and training [policies](https://aws.amazon.com/textract/faqs/#data-privacy--823zv7) to learn more.
 instructions: ''
 type: object
 documents:
